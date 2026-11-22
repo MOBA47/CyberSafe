@@ -1,0 +1,795 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberSafe | Online Safety Awareness</title>
+
+    <style>
+/* GENERAL SETTINGS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #07111f;
+    color: #ffffff;
+    line-height: 1.6;
+}
+
+/* NAVIGATION */
+header {
+    background: #0b192b;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid #1e3854;
+}
+
+.navbar {
+    max-width: 1200px;
+    margin: auto;
+    padding: 18px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    color: #35d6f2;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+}
+
+.nav-links a {
+    color: #dce8f5;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: #35d6f2;
+}
+
+.menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 26px;
+    cursor: pointer;
+}
+
+/* HERO SECTION */
+.hero {
+    min-height: 570px;
+    padding: 80px 10%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+    background:
+        radial-gradient(circle at 80% 40%, #173c61 0%, transparent 35%),
+        #07111f;
+}
+
+.hero-content {
+    max-width: 650px;
+}
+
+.small-title {
+    color: #35d6f2;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+}
+
+.hero h1 {
+    font-size: clamp(36px, 5vw, 60px);
+    line-height: 1.15;
+    margin-bottom: 20px;
+}
+
+.hero h1 span {
+    color: #35d6f2;
+}
+
+.hero-content p {
+    color: #bdcddd;
+    margin-bottom: 30px;
+}
+
+.main-btn {
+    display: inline-block;
+    background: #16b9d5;
+    color: #07111f;
+    border: none;
+    padding: 13px 25px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.main-btn:hover {
+    background: #78eaff;
+    transform: translateY(-3px);
+}
+
+.main-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.hero-icon {
+    text-align: center;
+    min-width: 230px;
+}
+
+.shield {
+    font-size: 150px;
+    filter: drop-shadow(0 0 25px #16b9d5);
+    animation: float 3s ease-in-out infinite;
+}
+
+.hero-icon p {
+    color: #35d6f2;
+    font-weight: bold;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+/* GENERAL SECTIONS */
+.section {
+    padding: 85px 8%;
+    scroll-margin-top: 80px;
+}
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+.section-heading h2,
+.about-content h2 {
+    font-size: 34px;
+    margin-bottom: 12px;
+}
+
+.section-heading > p:last-child {
+    color: #aebfd0;
+}
+
+/* CARDS */
+.card-container {
+    max-width: 1200px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+.info-card,
+.threat-card {
+    background: #102238;
+    border: 1px solid #24435f;
+    border-radius: 14px;
+    padding: 28px;
+    transition: 0.3s;
+}
+
+.info-card:hover,
+.threat-card:hover {
+    transform: translateY(-7px);
+    border-color: #35d6f2;
+    box-shadow: 0 8px 25px #00000055;
+}
+
+.card-icon {
+    font-size: 38px;
+    margin-bottom: 15px;
+}
+
+.info-card h3,
+.threat-card h3 {
+    color: #35d6f2;
+    margin-bottom: 10px;
+}
+
+.info-card p,
+.threat-card p {
+    color: #bdcddd;
+}
+
+/* THREATS */
+.threats-section {
+    background: #0b192b;
+}
+
+/* QUIZ */
+.quiz-section {
+    background:
+        radial-gradient(circle at center, #142d49, #07111f 70%);
+}
+
+.quiz-box {
+    max-width: 650px;
+    margin: auto;
+    padding: 35px;
+    background: #102238;
+    border: 1px solid #2c526f;
+    border-radius: 15px;
+    text-align: center;
+}
+
+#questionNumber {
+    color: #35d6f2;
+    margin-bottom: 15px;
+}
+
+#question {
+    font-size: 21px;
+    margin-bottom: 25px;
+}
+
+.answers {
+    display: grid;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.answer-btn {
+    padding: 14px;
+    background: #18334e;
+    border: 1px solid #355675;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.answer-btn:hover:not(:disabled) {
+    background: #205273;
+}
+
+.answer-btn:disabled {
+    cursor: default;
+}
+
+.answer-btn.correct {
+    background: #176b48;
+    border-color: #40d99a;
+}
+
+.answer-btn.wrong {
+    background: #7b3038;
+    border-color: #ff7b86;
+}
+
+#feedback {
+    min-height: 28px;
+    margin: 15px 0;
+    font-weight: bold;
+}
+
+#score {
+    margin-top: 20px;
+    color: #35d6f2;
+    font-weight: bold;
+}
+
+/* ABOUT */
+.about-section {
+    background: #0b192b;
+}
+
+.about-content {
+    max-width: 800px;
+    margin: auto;
+    text-align: center;
+}
+
+.about-content p {
+    color: #bdcddd;
+    margin-bottom: 15px;
+}
+
+.about-content .tagline {
+    color: #35d6f2;
+    font-size: 22px;
+    font-weight: bold;
+    margin-top: 25px;
+}
+
+/* FOOTER */
+footer {
+    background: #050c16;
+    text-align: center;
+    padding: 25px;
+    color: #8fa6ba;
+    font-size: 14px;
+}
+
+/* MOBILE RESPONSIVE DESIGN */
+@media (max-width: 850px) {
+    .card-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .hero {
+        padding: 65px 7%;
+    }
+
+    .shield {
+        font-size: 110px;
+    }
+}
+
+@media (max-width: 600px) {
+    .navbar {
+        flex-wrap: wrap;
+    }
+
+    .menu-btn {
+        display: block;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        gap: 15px;
+        padding-top: 20px;
+    }
+
+    .nav-links.show {
+        display: flex;
+    }
+
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 60px 7%;
+    }
+
+    .hero-icon {
+        margin-top: 20px;
+    }
+
+    .card-container {
+        grid-template-columns: 1fr;
+    }
+
+    .section {
+        padding: 65px 7%;
+    }
+
+    .section-heading h2,
+    .about-content h2 {
+        font-size: 28px;
+    }
+
+    .quiz-box {
+        padding: 25px 18px;
+    }
+}
+    </style>
+</head>
+<body>
+<header>
+        <nav class="navbar">
+            <div class="logo">🛡️ CyberSafe</div>
+
+            <button class="menu-btn" id="menuBtn">☰</button>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#learn">Learn</a></li>
+                <li><a href="#threats">Online Threats</a></li>
+                <li><a href="#quiz">Safety Quiz</a></li>
+                <li><a href="#about">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+
+        <!-- HOME SECTION -->
+        <section class="hero" id="home">
+            <div class="hero-content">
+                <p class="small-title">STUDENT DIGITAL SAFETY ADVOCACY</p>
+
+                <h1>Think Before You Click.<br>
+                    <span>Stay Safe Online.</span>
+                </h1>
+
+                <p>
+                    The internet connects us to the world, but staying safe
+                    online is everyone's responsibility. Learn how to protect
+                    your personal information and recognize online threats.
+                </p>
+
+                <a href="#learn" class="main-btn">Start Learning</a>
+            </div>
+
+            <div class="hero-icon">
+                <div class="shield">🛡️</div>
+                <p>Your Digital Safety Matters</p>
+            </div>
+        </section>
+
+        <!-- LEARN SECTION -->
+        <section class="section" id="learn">
+            <div class="section-heading">
+                <p class="small-title">BUILD YOUR KNOWLEDGE</p>
+                <h2>How to Stay Safe Online</h2>
+                <p>Follow these simple practices to protect yourself online.</p>
+            </div>
+
+            <div class="card-container">
+
+                <article class="info-card">
+                    <div class="card-icon">🔐</div>
+                    <h3>Protect Your Accounts</h3>
+                    <p>
+                        Use strong, unique passwords and enable two-factor
+                        authentication whenever available.
+                    </p>
+                </article>
+
+                <article class="info-card">
+                    <div class="card-icon">🔗</div>
+                    <h3>Check Before Clicking</h3>
+                    <p>
+                        Avoid suspicious links, unknown downloads, and
+                        messages that ask for personal information.
+                    </p>
+                </article>
+
+                <article class="info-card">
+                    <div class="card-icon">👤</div>
+                    <h3>Protect Your Privacy</h3>
+                    <p>
+                        Do not share sensitive personal information with
+                        strangers or untrusted websites.
+                    </p>
+                </article>
+
+                <article class="info-card">
+                    <div class="card-icon">📱</div>
+                    <h3>Update Your Devices</h3>
+                    <p>
+                        Keep your phone, computer, applications, and
+                        security software updated.
+                    </p>
+                </article>
+
+                <article class="info-card">
+                    <div class="card-icon">🧠</div>
+                    <h3>Think Before Sharing</h3>
+                    <p>
+                        Check information from reliable sources before
+                        believing or sharing it online.
+                    </p>
+                </article>
+
+                <article class="info-card">
+                    <div class="card-icon">🤝</div>
+                    <h3>Be Respectful</h3>
+                    <p>
+                        Treat others with respect and report cyberbullying
+                        or harmful online behavior.
+                    </p>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- ONLINE THREATS SECTION -->
+        <section class="section threats-section" id="threats">
+            <div class="section-heading">
+                <p class="small-title">KNOW THE RISKS</p>
+                <h2>Common Online Threats</h2>
+                <p>Understanding these threats can help you avoid them.</p>
+            </div>
+
+            <div class="card-container">
+
+                <article class="threat-card">
+                    <div class="card-icon">🎣</div>
+                    <h3>Phishing</h3>
+                    <p>
+                        Fake emails, messages, or websites designed to trick
+                        people into giving away private information.
+                    </p>
+                </article>
+
+                <article class="threat-card">
+                    <div class="card-icon">💸</div>
+                    <h3>Online Scams</h3>
+                    <p>
+                        Fraudulent offers or messages that try to steal
+                        money or personal information.
+                    </p>
+                </article>
+
+                <article class="threat-card">
+                    <div class="card-icon">💬</div>
+                    <h3>Cyberbullying</h3>
+                    <p>
+                        Using digital platforms to harass, threaten,
+                        embarrass, or hurt another person.
+                    </p>
+                </article>
+
+                <article class="threat-card">
+                    <div class="card-icon">📰</div>
+                    <h3>Misinformation</h3>
+                    <p>
+                        False or misleading information shared online
+                        that can confuse or mislead people.
+                    </p>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- QUIZ SECTION -->
+        <section class="section quiz-section" id="quiz">
+            <div class="section-heading">
+                <p class="small-title">TEST YOUR KNOWLEDGE</p>
+                <h2>CyberSafe Quiz</h2>
+                <p>Answer these questions and see how much you know about online safety.</p>
+            </div>
+
+            <div class="quiz-box">
+                <p id="questionNumber">Question 1 of 5</p>
+
+                <h3 id="question">Loading question...</h3>
+
+                <div id="answers" class="answers"></div>
+
+                <p id="feedback"></p>
+
+                <button id="nextBtn" class="main-btn" disabled>
+                    Next Question
+                </button>
+
+                <p id="score"></p>
+            </div>
+        </section>
+
+        <!-- ABOUT SECTION -->
+        <section class="section about-section" id="about">
+            <div class="about-content">
+                <p class="small-title">ABOUT THIS PROJECT</p>
+                <h2>Creating a Safer Digital Community</h2>
+
+                <p>
+                    CyberSafe is a student advocacy website that promotes
+                    cybersecurity awareness and responsible internet use.
+                    It aims to help students recognize online threats,
+                    protect their accounts, and make safer decisions online.
+                    Thank you for participating with my EMT Project.
+                </p>
+
+                <p class="tagline">
+                    Think. Check. Protect.
+                </p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>© 2026 CyberSafe | Student Digital Safety Advocacy Project</p>
+        <p>Stay informed. Stay alert. Stay safe.</p>
+    </footer>
+
+    <script>
+// MOBILE NAVIGATION
+const menuBtn = document.getElementById("menuBtn");
+const navLinks = document.getElementById("navLinks");
+
+menuBtn.addEventListener("click", function () {
+    navLinks.classList.toggle("show");
+});
+
+// CLOSE MENU AFTER CLICKING A LINK
+document.querySelectorAll(".nav-links a").forEach(function (link) {
+    link.addEventListener("click", function () {
+        navLinks.classList.remove("show");
+    });
+});
+
+// CYBERSAFE QUIZ QUESTIONS
+const questions = [
+    {
+        question: "What should you do before clicking an unfamiliar link?",
+        answers: [
+            "Click it immediately",
+            "Check if the link is trustworthy",
+            "Share it with everyone"
+        ],
+        correct: 1
+    },
+    {
+        question: "Which is an example of a strong password practice?",
+        answers: [
+            "Use the same password everywhere",
+            "Use your birthday",
+            "Use unique and hard-to-guess passwords"
+        ],
+        correct: 2
+    },
+    {
+        question: "What is phishing?",
+        answers: [
+            "A trick to steal personal information",
+            "A computer game",
+            "A way to update your phone"
+        ],
+        correct: 0
+    },
+    {
+        question: "What should you do if someone bullies you online?",
+        answers: [
+            "Respond with insults",
+            "Save evidence and report it to a trusted person or platform",
+            "Share the bullying publicly"
+        ],
+        correct: 1
+    },
+    {
+        question: "What should you do before sharing online information?",
+        answers: [
+            "Check if it comes from a reliable source",
+            "Believe everything you see",
+            "Share it without reading"
+        ],
+        correct: 0
+    }
+];
+
+// QUIZ ELEMENTS
+const questionNumber = document.getElementById("questionNumber");
+const questionText = document.getElementById("question");
+const answersContainer = document.getElementById("answers");
+const feedback = document.getElementById("feedback");
+const nextBtn = document.getElementById("nextBtn");
+const scoreText = document.getElementById("score");
+
+let currentQuestion = 0;
+let score = 0;
+let answered = false;
+
+// DISPLAY QUESTION
+function showQuestion() {
+    answered = false;
+
+    const current = questions[currentQuestion];
+
+    questionNumber.textContent =
+        "Question " + (currentQuestion + 1) +
+        " of " + questions.length;
+
+    questionText.textContent = current.question;
+
+    answersContainer.innerHTML = "";
+    feedback.textContent = "";
+    scoreText.textContent = "";
+    nextBtn.disabled = true;
+    nextBtn.textContent = "Next Question";
+
+    current.answers.forEach(function (answer, index) {
+        const button = document.createElement("button");
+
+        button.textContent = answer;
+        button.className = "answer-btn";
+
+        button.addEventListener("click", function () {
+            selectAnswer(index, button);
+        });
+
+        answersContainer.appendChild(button);
+    });
+}
+
+// CHECK ANSWER
+function selectAnswer(selectedIndex, selectedButton) {
+    if (answered) return;
+
+    answered = true;
+
+    const correctAnswer = questions[currentQuestion].correct;
+    const buttons = answersContainer.querySelectorAll("button");
+
+    buttons.forEach(function (button) {
+        button.disabled = true;
+    });
+
+    if (selectedIndex === correctAnswer) {
+        score++;
+        feedback.textContent = "Correct! Great job.";
+        feedback.style.color = "#40d99a";
+        selectedButton.classList.add("correct");
+    } else {
+        feedback.textContent =
+            "Not quite. Review the correct answer and keep learning.";
+
+        feedback.style.color = "#ff7b86";
+        selectedButton.classList.add("wrong");
+        buttons[correctAnswer].classList.add("correct");
+    }
+
+    nextBtn.disabled = false;
+
+    if (currentQuestion === questions.length - 1) {
+        nextBtn.textContent = "See My Results";
+    }
+}
+
+// NEXT QUESTION OR RESULTS
+nextBtn.addEventListener("click", function () {
+    if (!answered) return;
+
+    currentQuestion++;
+
+    if (currentQuestion < questions.length) {
+        showQuestion();
+    } else {
+        showResults();
+    }
+});
+
+// SHOW FINAL SCORE
+function showResults() {
+    questionNumber.textContent = "Quiz Completed!";
+    questionText.textContent = "Thank you for taking the CyberSafe Quiz.";
+
+    answersContainer.innerHTML = "";
+
+    feedback.textContent = "Keep practicing safe internet habits!";
+    feedback.style.color = "#35d6f2";
+
+    scoreText.textContent =
+        "Your Score: " + score + " out of " + questions.length;
+
+    nextBtn.textContent = "Try Again";
+    nextBtn.disabled = false;
+
+    nextBtn.onclick = function () {
+        currentQuestion = 0;
+        score = 0;
+        nextBtn.onclick = null;
+        showQuestion();
+    };
+}
+
+// START QUIZ
+showQuestion();
+    </script>
+</body>
+</html>
